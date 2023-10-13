@@ -24,7 +24,7 @@ export default function PlaceView() {
   if (!place) return null;
 
   return (
-    <div className="mt-4 p-8">
+    <div className="mt-4 px-12">
       <h1 className="text-2xl">{place.title}</h1>
       <AddressLink>{place.address}</AddressLink>
       {/* <AiOutlineUser>{place.name}</AiOutlineUser> */}
@@ -42,6 +42,15 @@ export default function PlaceView() {
         </div>
         {user?._id !== place?.owner && <BookingWidget place={place} />}
         
+      </div>
+      <div>
+        <h2 className="font-semibold text-2xl">Perks</h2>
+        <ul className="flex gap-4 mt-1 text-lg text-gray-700">
+          {place.perks.map((perk,index)=>(
+            <li key={index} className="border rounded-2xl border-slate-300 px-8 py-2">{perk}</li>
+          ))
+          }
+        </ul>
       </div>
       <div>
         <h2 className="font-semibold text-2xl">Extra Info</h2>

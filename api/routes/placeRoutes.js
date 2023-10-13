@@ -103,6 +103,18 @@ router.get('/places', async (req, res) => {
 });
 
 
+// delete place by id
+router.delete("/delete/:placeId", async (req, res) => {
+  try {
+    const placeId = req.params.placeId;
+    await Place.findByIdAndDelete(placeId);
+    
+    res.status(200).send("Place deleted successfully");
+  } catch (error) {
+    console.error(error);
+    res.status(500).send("An error occurred while deleting the place");
+  }
+});
 
 
 

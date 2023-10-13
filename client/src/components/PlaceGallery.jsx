@@ -6,21 +6,21 @@ export default function PlaceGallery({ place }) {
 
   if (showPhotos) {
     return (
-      <div className="absolute inset-0 bg-white min-h-screen">
-        <div className="p-8 grid gap-4">
-          <div>
-            <h2 className="text-3xl mr-34">Photos of {place.title}</h2>
+      <div className="absolute inset-0 bg-white min-h-screen m-12 p-12">
+        <div className="grid gap-4 ">
+          <div className="flex flex-row justify-between">
+            <h2 className="text-3xl mr-34">{place.title}</h2>
             <button
               onClick={() => setShowPhotos(false)}
-              className="fixed flex gap-1 py-2 px-4 rounded-xl text-red-500 right-12 top-8"
+              className="px-8 py-2 rounded-sm text-red-600"
             >
-              close
+              Close
             </button>
           </div>
           {place?.photos?.length > 0 &&
             place.photos.map((link,index) => (
-              <div key={index}>
-                <img src={link } alt={place.title}/>
+              <div key={index} className="object-cover">
+                <img src={link } alt={place.title} className="w-full h-full"/>
               </div>
             ))}
         </div>
@@ -30,7 +30,7 @@ export default function PlaceGallery({ place }) {
 
   return (
     <div className="relative">
-    <div className="grid gap-2 grid-cols-[2fr_1fr] rounded-3xl overflow-hidden">
+    <div className="grid gap-2 grid-cols-2 rounded-3xl overflow-hidden h-96">
       <div>
         {place.photos?.[0] && (
           <div>

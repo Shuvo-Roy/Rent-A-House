@@ -44,25 +44,6 @@ app.use('/booking', bookingRoutes);
 
 
 app.use('/uploads', express.static('uploads'));
-// Handle image download by link logic
-// app.post('/upload-by-link', async (req, res) => {
-//   const { link } = req.body;
-//   const newName = 'photo' + Date.now() + '.jpg';
-//   try {
-//     await imageDownloader.image({
-//       url: link,
-//       dest: __dirname + '/uploads/' + newName,
-//     });
-
-//     const imageUrl = `http://localhost:${port}/uploads/${newName}`;
-
-//     res.json({ imageUrl });
-//   } catch (error) {
-//     console.error('Error downloading image:', error);
-//     res.status(500).json({ error: 'Error downloading image' });
-//   }
-// });
-
 app.post('/upload', photosMiddleware.array('photos', 100), (req, res) => {
   const uploadedFiles = [];
   for (let i = 0; i < req.files.length; i++) {
